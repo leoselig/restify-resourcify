@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "mocha",
     "test:watch": "mocha --watch",
-    "build": "babel src --out-dir lib --watch --source-maps",
+    "build": "babel src --out-dir lib --source-maps",
     "watch": "npm run build -- --watch",
     "prepublish": "npm run build"
   },
