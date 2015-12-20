@@ -45,5 +45,16 @@
     "restify": "^4.0.3"
   },
   "author": "Leo Selig",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoselig/restify-resourcify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leoselig/restify-resourcify/issues"
+  },
+  "homepage": "https://github.com/leoselig/restify-resourcify#readme"
 }
