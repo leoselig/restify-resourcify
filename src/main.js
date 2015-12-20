@@ -1,5 +1,5 @@
-import Resource from './Resource';
+import registerResources from './register';
 import {GET, POST} from './decorators/http';
 import path from './decorators/path';
 
-export {Resource, GET, POST, path};
+export {GET, POST, path, registerResources};
