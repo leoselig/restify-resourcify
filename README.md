@@ -2,6 +2,7 @@
 Declarative bindings to restify service endpoint registration.
 
 [![Dependency Status](https://david-dm.org/leoselig/restify-resourcify.svg)](https://david-dm.org/leoselig/restify-resourcify)
+[![Build Status](https://travis-ci.org/leoselig/restify-resourcify.svg?branch=master)](https://travis-ci.org/leoselig/restify-resourcify)
 
 ## Getting Started
 
