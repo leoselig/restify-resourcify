@@ -1,6 +1,7 @@
 # restify-resourcify
 Declarative bindings to restify service endpoint registration.
 
+[![GitHub version](https://badge.fury.io/gh/leoselig%2Frestify-resourcify.svg)](https://badge.fury.io/gh/leoselig%2Frestify-resourcify)
 [![Dependency Status](https://david-dm.org/leoselig/restify-resourcify.svg)](https://david-dm.org/leoselig/restify-resourcify)
 [![Build Status](https://travis-ci.org/leoselig/restify-resourcify.svg?branch=master)](https://travis-ci.org/leoselig/restify-resourcify)
 
