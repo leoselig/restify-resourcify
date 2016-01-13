@@ -1,6 +1,8 @@
 # restify-resourcify
 Declarative bindings to restify service endpoint registration.
 
+[![Dependency Status](https://david-dm.org/leoselig/restify-resourcify.svg)](https://david-dm.org/leoselig/restify-resourcify)
+
 ## Getting Started
 
 ```sh
