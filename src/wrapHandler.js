@@ -14,5 +14,5 @@ export default (handler) => {
 };
 
 function objectToResponse(responseInfo, response) {
-  response.send(responseInfo.data);
+  response.send(responseInfo.data ? responseInfo.data : null);
 }
