@@ -4,26 +4,19 @@ import sinon from 'sinon';
 
 describe('wrapHandler', function() {
 
-  beforeEach(function() {
+  describe('error handling', function() {
+
+    it('throws the exact error that occured inside of original handler', async function() {
+      const error = new Error('You knew this would happen...');
+      const testHandler = createTestHandler(() => {
+        throw error;
+      });
+      return expect(testHandler.handler()).to.be.rejectedWith(error);
+    });
 
   });
 
   describe('processing of returned response description', function() {
-
-    function createTestHandler(handler) {
-      const fakeRequest = createFakeRequest();
-      const fakeResponse = createFakeResponse();
-      const fakeNext = createFakeNext();
-      const wrappedHandler = wrapHandler(handler);
-      return {
-        handler() {
-          return wrappedHandler(fakeRequest, fakeResponse, fakeNext);
-        },
-        fakeRequest,
-        fakeResponse,
-        fakeNext
-      };
-    }
 
     describe('when empty', function() {
 
@@ -74,5 +67,20 @@ function createFakeResponse() {
 }
 
 function createFakeNext() {
+  return () => {};
+}
 
+function createTestHandler(handler) {
+  const fakeRequest = createFakeRequest();
+  const fakeResponse = createFakeResponse();
+  const fakeNext = createFakeNext();
+  const wrappedHandler = wrapHandler(handler);
+  return {
+    async handler() {
+      return await wrappedHandler(fakeRequest, fakeResponse, fakeNext);
+    },
+    fakeRequest,
+    fakeResponse,
+    fakeNext
+  };
 }

@@ -9,6 +9,7 @@ export default (handler) => {
       next();
     } catch (error) {
       logError('server', error);
+      throw error;
     }
   };
 };
