@@ -38,7 +38,6 @@
     "source-map-support": "^0.4.0"
   },
   "dependencies": {
-    "chai-as-promised": "^5.2.0",
     "invariant": "^2.2.0",
     "npmlog": "^2.0.0"
   },
