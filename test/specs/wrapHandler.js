@@ -6,17 +6,12 @@ describe('wrapHandler', function() {
 
   describe('error handling', function() {
 
-    it('calls response.send() with the exact error that has been thrown', async function() {
+    it('throws the exact error that occured inside of original handler', async function() {
       const error = new Error('You knew this would happen...');
       const testHandler = createTestHandler(() => {
         throw error;
       });
-
-      await testHandler.handler();
-
-      const sendSpy = testHandler.fakeResponse.send;
-      expect(sendSpy).to.have.been.calledOnce;
-      expect(sendSpy).to.have.been.calledWith(error);
+      return expect(testHandler.handler()).to.be.rejectedWith(error);
     });
 
   });

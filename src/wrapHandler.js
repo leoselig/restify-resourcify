@@ -6,11 +6,10 @@ export default (handler) => {
     try {
       const responseInfo = await handler(request);
       objectToResponse(responseInfo, response);
+      next();
     } catch (error) {
       logError('server', error);
-      response.send(error);
-    } finally {
-      next();
+      throw error;
     }
   };
 };
