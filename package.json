@@ -30,10 +30,12 @@
     "babel-preset-stage-0": "^6.1.18",
     "babel-register": "^6.3.13",
     "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
     "eslint": "^1.10.3",
     "eslint-plugin-mocha": "^1.1.0",
     "mocha": "^2.3.4",
     "q": "^1.4.1",
+    "restify": "^4.0.4",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0",
     "source-map-support": "^0.4.0"
