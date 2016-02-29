@@ -4,16 +4,16 @@ export default (handler) => {
   return async (request, response, next) => {
     logInfo('server', request.method + ' ' + request.url);
     try {
-      const responseInfo = await handler(request);
-      objectToResponse(responseInfo, response);
+      const responseDescription = await handler(request) || {};
+      objectToResponse(responseDescription, response);
       next();
     } catch (error) {
       logError('server', error);
-      throw error;
+      next(error);
     }
   };
 };
 
-function objectToResponse(responseInfo, response) {
-  response.send(responseInfo.data ? responseInfo.data : null);
+function objectToResponse(responseDescription, response) {
+  response.send(responseDescription.data ? responseDescription.data : '');
 }
