@@ -1,6 +1,6 @@
 import createTestEnvironment from '../createTestEnvironment';
 import path from '../../src/decorators/path';
-import {GET} from '../../src/decorators/http';
+import {GET, POST} from '../../src/decorators/http';
 import {expect} from 'chai';
 import sinon from 'sinon';
 
@@ -11,6 +11,46 @@ describe('response generation', function() {
   afterEach(async function() {
     endpoint.restore();
     await testEnvironment.tearDown();
+  });
+
+  describe('status code', function() {
+
+    it('is 200 by default', async function() {
+      await setupEndpoint(() => {});
+      const {client} = testEnvironment;
+      const response = await client.get('/foo');
+      expect(response.statusCode).to.equal(200);
+    });
+
+    it('is 201 for POST by default', async function() {
+      await setupEndpoint(() => {}, POST);
+      const {client} = testEnvironment;
+      const response = await client.post('/foo');
+      expect(response.statusCode).to.equal(201);
+    });
+
+    it('sets status code to optional field statusCode in response description, if provided', async function() {
+      await setupEndpoint(() => {
+        return {
+          statusCode: 422
+        };
+      });
+      const {client} = testEnvironment;
+      const response = await client.get('/foo');
+      expect(response.statusCode).to.equal(422);
+    });
+
+    it('statusCode field in response description overrides POST-default', async function() {
+      await setupEndpoint(() => {
+        return {
+          statusCode: 422
+        };
+      }, POST);
+      const {client} = testEnvironment;
+      const response = await client.post('/foo');
+      expect(response.statusCode).to.equal(422);
+    });
+
   });
 
   describe('response body', function() {
@@ -74,10 +114,10 @@ describe('response generation', function() {
 
   });
 
-  async function setupEndpoint(endpointMethod) {
+  async function setupEndpoint(endpointMethod, decorator = GET) {
     @path('/foo')
     class TestResource {
-      @GET
+      @decorator
       async bar() {
         return endpointMethod.call(this, ...arguments);
       }
