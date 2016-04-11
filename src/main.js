@@ -1,5 +1,6 @@
 import registerResources from './register';
-import {GET, POST} from './decorators/http';
+import {HEAD, GET, POST, PUT, DELETE} from './decorators/http';
 import path from './decorators/path';
+import schema from './decorators/schema';
 
-export {GET, POST, path, registerResources};
+export {HEAD, GET, POST, PUT, DELETE, path, schema, registerResources};
