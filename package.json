@@ -9,7 +9,8 @@
     "test:watch": "mocha --watch",
     "build": "babel src --out-dir lib --source-maps",
     "watch": "npm run build -- --watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "eslint src/**/* test/**/*.js"
   },
   "keywords": [
     "restify",
