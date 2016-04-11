@@ -1,5 +1,5 @@
 import {defer} from 'q';
-import {createServer} from 'restify';
+import {createServer, bodyParser} from 'restify';
 import registerResources from '../src/register';
 import {spyOnServer, stopSpyingOnServer} from './serverSpying';
 
@@ -20,6 +20,8 @@ export default async (resource) => {
 
 async function startServer(resource) {
   const server = createServer();
+
+  server.use(bodyParser());
 
   spyOnServer(server);
 
