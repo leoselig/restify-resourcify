@@ -10,10 +10,11 @@ export default function schema(schemaJSON) {
 }
 
 function createSchemaFilter(schema) {
-  return (request) => {
+  return (request, response, next) => {
     const {valid, errors} = validate(request.body, schema);
     if (!valid) {
-      throw new BadRequestError({body: errors});
+      next(new BadRequestError({body: errors}));
     }
+    next();
   };
 }

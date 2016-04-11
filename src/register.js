@@ -19,7 +19,7 @@ export default (server, resources) => {
       const completePath = path.join(basePath, methodPath || '').replace(/\\/g, '/');
       const register = ::server[httpToRestify[http]];
       const endpointMethod = ::resource[methodName];
-      register(completePath, wrapHandler(filters, endpointMethod));
+      register(completePath, ...filters, wrapHandler(endpointMethod));
       npmlog.info('server', `Registered handler for: ${http} ${completePath}`);
     });
   });
