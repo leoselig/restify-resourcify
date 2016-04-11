@@ -1,6 +1,6 @@
 {
   "name": "restify-resourcify",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Provides base class and ES2016 decorators to declare restify routes.",
   "main": "index.js",
   "scripts": {
