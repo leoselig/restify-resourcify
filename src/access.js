@@ -21,7 +21,8 @@ export function endpoint(Resource, name) {
   const newEndpoint = {
     methodName: name,
     http: null,
-    methodPath: null
+    methodPath: null,
+    filters: []
   };
   endpoints.push(newEndpoint);
   return newEndpoint;
